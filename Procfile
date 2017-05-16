@@ -1,0 +1,1 @@
+worker: java -jar build/libs/collectedransom-1.0-all.jar
