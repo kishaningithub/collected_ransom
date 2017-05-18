@@ -42,7 +42,7 @@ shadowJar {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.kishan.collectedransom.RansomTweeter'
+        attributes 'Main-Class': 'com.kishan.collectedransom.CollectedRansom'
     }
 }
 

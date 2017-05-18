@@ -1,16 +1,14 @@
 package com.kishan.collectedransom;
 
-import com.kishan.collectedransom.health.CollectedRansomHealthCheck;
 import com.kishan.collectedransom.controller.TransactionController;
-import com.kishan.collectedransom.service.TransactionEventService;
+import com.kishan.collectedransom.health.CollectedRansomHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
 public class CollectedRansom extends Application<CollectedRansomConfiguration> {
 
     public static void main(String[] args) throws Exception {
-    //    new CollectedRansom().run(args);
-        new TransactionEventService().calculateTotalBalanceAndSendTweet(null);
+        new CollectedRansom().run(args);
     }
 
 
