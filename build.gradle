@@ -54,3 +54,7 @@ jacocoTestReport {
 }
 
 assemble.dependsOn shadowJar
+
+// Heroku runs this task during deploy
+task stage(dependsOn: ['build', 'clean'])
+build.mustRunAfter clean
