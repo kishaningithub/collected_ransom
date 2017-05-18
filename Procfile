@@ -1,1 +1,1 @@
-worker: java -jar build/libs/collectedransom-1.0-all.jar
+web: java -jar build/libs/collectedransom-1.0-all.jar server

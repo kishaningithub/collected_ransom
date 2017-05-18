@@ -1,0 +1,8 @@
+sudo: false
+language: java
+jdk:
+  - openjdk8
+script:
+  - ./gradlew clean build jacocoTestReport --stacktrace
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
