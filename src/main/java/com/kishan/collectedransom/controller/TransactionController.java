@@ -23,7 +23,6 @@ public class TransactionController {
     @Timed
     public Response onReceiveBitCoins(Transaction transaction) throws IOException, TwitterException {
         log.info("Received transaction " + transaction);
-        System.out.println("Printing via syso " + transaction);
         new TransactionEventService().calculateTotalBalanceAndSendTweet(transaction);
         return Response.ok().build();
     }
