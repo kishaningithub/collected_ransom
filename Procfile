@@ -1,1 +1,1 @@
-web: java -jar build/libs/collectedransom-1.0-all.jar server
+web: java -Ddw.server.applicationConnectors[0].port=$PORT -jar build/libs/collectedransom-1.0-all.jar server production.yml
