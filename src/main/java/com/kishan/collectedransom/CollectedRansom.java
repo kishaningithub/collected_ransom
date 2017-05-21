@@ -1,7 +1,7 @@
 package com.kishan.collectedransom;
 
-import com.kishan.collectedransom.controller.TransactionController;
-import com.kishan.collectedransom.health.CollectedRansomHealthCheck;
+import com.kishan.collectedransom.di.component.CollectedRansomComponent;
+import com.kishan.collectedransom.di.component.DaggerCollectedRansomComponent;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
@@ -11,18 +11,19 @@ public class CollectedRansom extends Application<CollectedRansomConfiguration> {
         new CollectedRansom().run(args);
     }
 
-
     @Override
     public void run(CollectedRansomConfiguration configuration, Environment environment) throws Exception {
-        registerResources(environment);
-        registerHealthChecks(environment);
+        CollectedRansomComponent collectedRansomComponent = DaggerCollectedRansomComponent.builder()
+                .build();
+        registerResources(environment, collectedRansomComponent);
+        registerHealthChecks(environment, collectedRansomComponent);
     }
 
-    private void registerResources(Environment environment) {
-        environment.jersey().register(TransactionController.class);
+    private void registerResources(Environment environment, CollectedRansomComponent collectedRansomComponent) {
+        environment.jersey().register(collectedRansomComponent.getTransactionController());
     }
 
-    private void registerHealthChecks(Environment environment) {
-        environment.healthChecks().register("collectedransom", new CollectedRansomHealthCheck());
+    private void registerHealthChecks(Environment environment, CollectedRansomComponent collectedRansomComponent) {
+        environment.healthChecks().register("collectedransom", collectedRansomComponent.getCollectedRansomHealthCheck());
     }
 }

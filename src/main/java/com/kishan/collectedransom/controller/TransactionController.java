@@ -1,9 +1,12 @@
 package com.kishan.collectedransom.controller;
 
 import com.codahale.metrics.annotation.Timed;
+import com.kishan.collectedransom.model.Transaction;
+import com.kishan.collectedransom.service.TransactionEventService;
 import lombok.extern.slf4j.Slf4j;
 import twitter4j.TwitterException;
 
+import javax.inject.Inject;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,12 +19,19 @@ import java.io.IOException;
 @Slf4j
 public class TransactionController {
 
+    private final TransactionEventService transactionEventService;
+
+    @Inject
+    public TransactionController(TransactionEventService transactionEventService) {
+        this.transactionEventService = transactionEventService;
+    }
+
     @POST
     @Path("receive")
     @Timed
-    public Response onReceiveBitCoins(String transaction) throws IOException, TwitterException {
+    public Response onReceiveBitCoins(Transaction transaction) throws IOException, TwitterException {
         log.info("Received transaction " + transaction);
-//        new TransactionEventService().calculateTotalBalanceAndSendTweet(transaction);
+        transactionEventService.calculateTotalBalanceAndSendTweet(transaction);
         return Response.ok().build();
     }
 }

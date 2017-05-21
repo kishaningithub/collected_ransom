@@ -1,16 +1,14 @@
 package com.kishan.collectedransom.model;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Getter
+@EqualsAndHashCode
 @ToString
-public class BitcoinEvent {
-    private String id;
-    private BitCoinEventType event;
+public class BitCoinAddress {
     private String address;
 }
