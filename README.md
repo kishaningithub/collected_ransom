@@ -3,8 +3,7 @@
 [![Buy me a coffee](https://img.shields.io/badge/☕-Buy%20me%20a%20coffee-blue.svg)](https://www.paypal.me/kishansh/5)
 
 
-View the sum of collected ransom by #WannaCry ransom ware
-via twitter (Live updates)
+A Twitter bot that tweets about #WannaCry ransom collections as and when it happens from across the globe
 
 [https://twitter.com/CollectedRansom](https://twitter.com/CollectedRansom)
 

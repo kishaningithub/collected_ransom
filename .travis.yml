@@ -1,12 +1,9 @@
 sudo: false
-
 language: java
 dist: trusty
 jdk:
   - openjdk8
-
 script:
   - ./gradlew clean build jacocoTestReport --stacktrace
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)
